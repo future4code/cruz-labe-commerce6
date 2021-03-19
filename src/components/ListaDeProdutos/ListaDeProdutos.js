@@ -6,7 +6,6 @@ import CardProduto from './CardProduto/CardProduto'
 const ContainerProduto = styled.div`
     width: 55vw;
     min-height: 100vh;
-    background-color: red;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -15,9 +14,14 @@ const ContainerProduto = styled.div`
 
 const HeaderListaProduto = styled.div`
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100%;
     height: 20px;
+    margin-bottom: 30px;
+
+    label>select{
+        margin-left: 5px;
+    }
 `
 
 export default class ListaDeProdutos extends Component {
@@ -43,7 +47,7 @@ export default class ListaDeProdutos extends Component {
         return (
             <ContainerProduto>
                 <HeaderListaProduto>
-                    <span>Quantidade de produtos: {this.props.produtos.length}</span>
+                    <span>Quantidade de produtos: {listaOrdenada.length}</span>
                     <label>Ordenação: 
                         <select onChange={this.onChangeOrdenação}>
                             <option value="crescente">Crescente</option>
@@ -60,6 +64,7 @@ export default class ListaDeProdutos extends Component {
                         imagem={produto.imageUrl} 
                         nome={produto.name} 
                         valor={produto.value}
+                        onClickAdicionarProduto={this.props.onClickAdicionarProduto}
                     />
                 })}
             </ContainerProduto>
